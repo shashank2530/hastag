@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <tbody>
-  <?php
-  
-  ?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -17,12 +14,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </head>
     <body>
-      <select id="select" class="form-select" aria-label="Default select example">
-        <option selected>Select Image </option>
-        <option value="1">Horse Image</option>
-        <option value="2">Traffic Image</option>
-        <option value="3">People Image</option>
-      </select>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      Select image to upload:
+      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input type="submit" value="Upload Image" name="submit">
+    </form>
         <h1 class="heading">Hash Tag Generator</h1>
         <div class="card" style="width: 40%;">
             <img src="maxresdefault.jpeg" class="card-img-top" alt="...">
