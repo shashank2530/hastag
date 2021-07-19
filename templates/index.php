@@ -31,7 +31,7 @@
               <p id="card_tags" class="card-text">
                 <?php
                 exec('python tag.py asdadasdada https://static.pexels.com/photos/248797/pexels-photo-248797.jpeg tags.txt');
-                $myfile = fopen("tags.txt", "r") or die("Unable to open file!");
+                $myfile = fopen("../tags.txt", "r") or die("Unable to open file!");
                 echo fread($myfile,filesize("tags.txt"));
                 fclose($myfile);
                 ?>
