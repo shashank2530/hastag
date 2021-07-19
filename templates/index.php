@@ -16,12 +16,21 @@
     <body>
     <form action="upload.php" method="post" enctype="multipart/form-data">
       Select image to upload:
-      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input type="file" name="fileToUpload" id="fileToUpload" onchange="loadFile(event)">
       <input type="submit" value="Upload Image" name="submit">
     </form>
         <h1 class="heading">Hash Tag Generator</h1>
         <div class="card" style="width: 40%;">
-            <img src="maxresdefault.jpeg" class="card-img-top" alt="...">
+        <img id="output"/>
+      <script>
+        var loadFile = function(event) {
+          var output = document.getElementById('output');
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.onload = function() {
+            URL.revokeObjectURL(output.src) // free memory
+          }
+        };
+      </script>
             <div class="card-body">
               <h2>Hash Tags</h2>
               <p id="card_tags" class="card-text">
