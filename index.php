@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <tbody>
+<?php error_reporting(0);
+
+$msg = "";
+
+if ( isset( $_POST['upload']) ) {
+
+	$filename = $_FILES["uploadfile"]["name"];
+	$tempname = $_FILES["uploadfile"]["tmp_name"];
+    $folder   = $filename;
+
+    if ( move_uploaded_file( $tempname, $folder ) ) {
+        $msg = "Image uploaded successfully";
+    } else{
+        $msg = "Failed to upload image";
+	}
+}
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -14,11 +31,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </head>
     <body>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-      Select image to upload:
-      <input type="file" name="fileToUpload" id="fileToUpload" onchange="loadFile(event)">
-      <input type="submit" value="Upload Image" name="submit">
+    <h2><?php echo $msg; ?></h2>
+    <form method="POST" action="" enctype="multipart/form-data">
+        <input type="file" name="fileToUpload" onchange="loadFile(event)"/>
+        <button type="submit" name="upload">UPLOAD</button>
     </form>
+    </body>
         <h1 class="heading">Hash Tag Generator</h1>
         <div class="card" style="width: 40%;">
         <img id="output"/>
